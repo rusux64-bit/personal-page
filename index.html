@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rusu | Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Noto+Sans:wght@400;500;600&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#9a4521;--on-primary:#fff;--primary-container:#ffdbcc;--on-primary-container:#351000;
+  --secondary-container:#f5dfd4;--on-secondary-container:#2b160d;
+  --tertiary-container:#e5e8b0;--on-tertiary-container:#1c1d00;
+  --surface:#fff8f5;--on-surface:#221a16;--on-surface-variant:#52443c;
+  --sc-low:#fff1ea;--sc:#f9ebe3;--sc-high:#f3e5dd;
+  --outline:#85736b;--outline-variant:#d8c2b8;
+  --cool-container:#cde5f0;--on-cool-container:#0a1e29;
+  --violet-container:#e4dcf2;--on-violet-container:#1e1530;
+  --r-sm:8px;--r-md:12px;--r-xl:28px;--r-full:9999px;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --primary:#ffb596;--on-primary:#5a1c00;--primary-container:#7b2f0b;--on-primary-container:#ffdbcc;
+  --secondary-container:#5a4136;--on-secondary-container:#f5dfd4;
+  --tertiary-container:#444903;--on-tertiary-container:#e5e8b0;
+  --surface:#1a120e;--on-surface:#f0dfd8;--on-surface-variant:#d8c2b8;
+  --sc-low:#231a16;--sc:#271e1a;--sc-high:#322824;--outline:#a08d84;--outline-variant:#52443c;
+  --cool-container:#2c4a5c;--on-cool-container:#d0e8f6;
+  --violet-container:#44385c;--on-violet-container:#e6defa;}}
+:root[data-theme="dark"]{
+  --primary:#ffb596;--on-primary:#5a1c00;--primary-container:#7b2f0b;--on-primary-container:#ffdbcc;
+  --secondary-container:#5a4136;--on-secondary-container:#f5dfd4;
+  --tertiary-container:#444903;--on-tertiary-container:#e5e8b0;
+  --surface:#1a120e;--on-surface:#f0dfd8;--on-surface-variant:#d8c2b8;
+  --sc-low:#231a16;--sc:#271e1a;--sc-high:#322824;--outline:#a08d84;--outline-variant:#52443c;
+  --cool-container:#2c4a5c;--on-cool-container:#d0e8f6;
+  --violet-container:#44385c;--on-violet-container:#e6defa;}
+html{height:auto;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+::selection{background:var(--on-surface);color:var(--surface)}
+.theme-anim,.theme-anim *{transition:background-color .5s ease,color .5s ease,border-color .5s ease!important}
+@media (prefers-reduced-motion:reduce){.theme-anim,.theme-anim *{transition:none!important}}
+.hero ::selection{background:var(--on-primary-container);color:var(--primary-container)}
+body{margin:0;background:var(--surface);color:var(--on-surface);font:400 16px/24px "Noto Sans",system-ui,sans-serif;letter-spacing:.5px}
+a{color:var(--primary)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--outline-variant)}
+.bar{max-width:880px;margin:auto;height:64px;padding:0 16px;display:flex;align-items:center;gap:8px}
+.bar .t{font:800 26px/28px "Outfit","Roboto Flex",system-ui,sans-serif;letter-spacing:-.5px;letter-spacing:0;flex:1}
+.bar a.nav{color:var(--on-surface-variant);text-decoration:none;font:500 14px/20px "Noto Sans",system-ui,sans-serif;letter-spacing:.1px;padding:10px 12px;border-radius:var(--r-full)}
+.bar a.nav:hover{background:var(--sc-high)}
+.icon{width:48px;height:48px;border:0;border-radius:var(--r-full);background:none;color:var(--on-surface-variant);cursor:pointer;font-size:20px}
+.icon:hover{background:var(--sc-high)}
+:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+main{max-width:880px;margin:auto;padding:0 16px 48px}
+section{padding-top:56px}
+.hero{margin-top:32px;padding:48px 32px;background:var(--primary-container);color:var(--on-primary-container);border-radius:48px}
+.hero h1{font:800 56px/64px "Outfit","Roboto Flex",system-ui,sans-serif;letter-spacing:-1.5px;margin:0 0 16px}
+.hero h1 em{font-style:italic;color:var(--primary)}
+.hero p{font-size:18px;line-height:28px;max-width:56ch;margin:0 0 24px;color:inherit}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;height:40px;padding:0 24px;border-radius:var(--r-full);font:500 14px/20px "Noto Sans",system-ui,sans-serif;letter-spacing:.1px;text-decoration:none;border:1px solid transparent}
+.btn.fill{background:var(--primary);color:var(--on-primary)}
+.btn.tonal{background:var(--secondary-container);color:var(--on-secondary-container)}
+.btn.out{border-color:var(--outline);color:var(--primary)}
+.btn:hover{filter:brightness(1.08)}
+h2{font:700 34px/40px "Outfit","Roboto Flex",system-ui,sans-serif;letter-spacing:-.5px;margin:0 0 16px}
+.chip{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:var(--r-sm);border:1px solid var(--outline);font:500 14px/20px "Noto Sans",system-ui,sans-serif;letter-spacing:.1px;color:var(--on-surface-variant)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--sc-low);border:1px solid var(--outline-variant);border-radius:var(--r-md);padding:20px}
+.card.c1{background:var(--violet-container);color:var(--on-violet-container);border:0}
+.card.c2{background:var(--tertiary-container);color:var(--on-tertiary-container);border:0}
+.card.c3{background:var(--cool-container);color:var(--on-cool-container);border:0}
+.card h3{font:600 22px/28px "Outfit","Roboto Flex",system-ui,sans-serif;letter-spacing:0;margin:0 0 8px}
+.card p{margin:0;font-size:14px;line-height:20px;letter-spacing:.25px}
+.mono{font-family:"Roboto Mono",ui-monospace,monospace;font-size:13px}
+.log{background:var(--sc);border-radius:var(--r-xl);padding:24px;margin-top:16px}
+.log h3{margin:0 0 12px;font:500 16px/24px "Noto Sans",system-ui,sans-serif}
+.log ul{margin:0;padding-left:20px}.log li{margin:6px 0}
+.log s{color:var(--outline)}
+.proj{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.proj .chip{margin-top:4px}
+.k{font:600 13px/20px "Noto Sans",system-ui,sans-serif;letter-spacing:.5px;text-transform:uppercase;opacity:.75;margin-bottom:4px}
+.v{font-family:"Roboto Mono",ui-monospace,monospace;font-size:15px;line-height:22px;word-break:break-all}
+.card.link{text-decoration:none;color:inherit}
+.card.link:hover{filter:brightness(1.08)}
+.contact{margin:24px 0 20px}
+.pills{gap:12px}
+.btn b{font-weight:600;margin-right:8px;color:var(--on-surface)}
+button.btn{background:none;cursor:pointer}
+.btn:hover{background:var(--sc-high);filter:none}
+.hint{font-size:13px;line-height:20px;color:var(--on-surface-variant);margin:12px 0 0}
+footer{max-width:880px;margin:auto;padding:24px 16px 32px;color:var(--on-surface-variant);font-size:14px;border-top:1px solid var(--outline-variant)}
+@media (max-width:600px){.hero{padding:32px 20px;border-radius:32px}.hero h1{font-size:40px;line-height:48px}.bar a.nav{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <span class="t">rusu</span>
+  <a class="nav" href="#about">About</a><a class="nav" href="#into">Interests</a><a class="nav" href="#work">Projects</a><a class="nav" href="#contact">Contact</a>
+  <button class="icon" id="theme" aria-label="Toggle light or dark theme" title="Light / dark">◐</button>
+</div></header>
+
+<main>
+<section class="hero" id="top">
+  <h1>Hi, I'm <em>Rusu</em>.<br>I break my network, then fix it.</h1>
+  <p>I live in Hîncești, Moldova, run a few services at home, and I'm slowly teaching myself C++. This is my little corner of the internet.</p>
+  <div class="row">
+    <a class="btn fill" href="https://github.com/rusux64-bit" target="_blank" rel="noopener noreferrer">My GitHub</a>
+    <a class="btn out" href="#work">See what I'm making</a>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About me</h2>
+  <p>I'm the kind of person who isn't happy when something just works — I want to know <i>why</i> it works. That's how I ended up self-hosting things and chasing down DNS problems at odd hours. Linux is my main environment, with macOS next to it when the task fits better.</p>
+</section>
+
+<section id="into">
+  <h2>What I'm into</h2>
+  <div class="grid">
+    <div class="card c1"><h3>Self-hosting</h3><p>Running services at home and finding out what it really takes to keep them up.</p></div>
+    <div class="card c2"><h3>Networking</h3><p>Routing, DNS, and the classic "why can't I reach this?" mystery.</p></div>
+    <div class="card c3"><h3>Linux + macOS</h3><p>Both, every day. Whichever one makes the job easier.</p></div>
+  </div>
+  <div class="log">
+    <h3>Currently learning: C++</h3>
+    <p style="margin:0 0 12px;font-size:14px;line-height:20px">Still early days. Mostly practice projects and small experiments.</p>
+    <ul>
+      <li>Writing small programs to see how things behave</li>
+      <li>Breaking things <span class="mono">→</span> reading the error <span class="mono">→</span> fixing them</li>
+      <li><s>Understanding everything on the first try</s></li>
+    </ul>
+  </div>
+</section>
+
+<section id="work">
+  <h2>Projects</h2>
+  <div class="grid">
+    <a class="card" href="https://github.com/rusux64-bit/Ripcord" style="text-decoration:none;color:inherit" target="_blank" rel="noopener noreferrer">
+      <div class="proj"><h3>Ripcord</h3><span class="chip">JavaScript</span></div>
+      <p>My most visible repo on GitHub. Take a look at the code and tell me what I got wrong.</p>
+    </a>
+    <a class="card" href="https://github.com/rusux64-bit/rusux64-bit" style="text-decoration:none;color:inherit" target="_blank" rel="noopener noreferrer">
+      <div class="proj"><h3>Profile README</h3><span class="chip">Markdown</span></div>
+      <p>The short version of this page, written for GitHub.</p>
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Say hi</h2>
+  <p>Want to talk about self-hosting, networking or C++? Open an issue or send a message on GitHub. I'm always happy to learn from people who know more than I do.</p>
+  <div class="row pills">
+    <a class="btn out" href="https://github.com/rusux64-bit" target="_blank" rel="noopener noreferrer"><b>GitHub</b>rusux64-bit</a>
+    <a class="btn out" href="https://www.instagram.com/alexandru._.rusu999/" target="_blank" rel="noopener noreferrer"><b>Instagram</b>@alexandru._.rusu999</a>
+    <a class="btn out" href="mailto:rusu.x64@gmail.com"><b>Email</b>rusu.x64@gmail.com</a>
+  </div>
+</section>
+</main>
+
+<footer>Made with ❤️ in Moldova. Still in progress.</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  document.getElementById('theme').addEventListener('click',function(){
+    var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+    root.classList.add('theme-anim');
+    root.dataset.theme=dark?'light':'dark';
+    clearTimeout(window.__t);
+    window.__t=setTimeout(function(){root.classList.remove('theme-anim')},600);
+  });
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var v=b.getAttribute('data-copy'),t=b.querySelector('span'),old=t.textContent;
+      function done(){t.textContent='Copied ✓';setTimeout(function(){t.textContent=old},1300)}
+      try{navigator.clipboard.writeText(v).then(done,done)}catch(e){done()}
+    });
+  });
+})();
+</script>
+</body>
+</html>
