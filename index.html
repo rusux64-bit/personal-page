@@ -5,179 +5,327 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rusu | Portofolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Noto+Sans:wght@400;500;600&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{
   --primary:#9a4521;--on-primary:#fff;--primary-container:#ffdbcc;--on-primary-container:#351000;
   --secondary-container:#f5dfd4;--on-secondary-container:#2b160d;
   --tertiary-container:#e5e8b0;--on-tertiary-container:#1c1d00;
-  --surface:#fff8f5;--on-surface:#221a16;--on-surface-variant:#52443c;
-  --sc-low:#fff1ea;--sc:#f9ebe3;--sc-high:#f3e5dd;
-  --outline:#85736b;--outline-variant:#d8c2b8;
   --cool-container:#cde5f0;--on-cool-container:#0a1e29;
   --violet-container:#e4dcf2;--on-violet-container:#1e1530;
-  --r-sm:8px;--r-md:12px;--r-xl:28px;--r-full:9999px;
-  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-}
+  --surface:#fff8f5;--on-surface:#221a16;--on-surface-variant:#52443c;
+  --sc:#f9ebe3;--sc-high:#f3e5dd;--outline:#85736b;--outline-variant:#d8c2b8;
+  --spring:cubic-bezier(.34,1.56,.64,1);--emph:cubic-bezier(.2,0,0,1);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@supports (transition-timing-function:linear(0,1)){:root{--spring:linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.121,1.149 24.3%,1.159,1.163,1.161,1.154 29.9%,1.129 32.8%,1.051 39.6%,1.017 43.1%,.991,.977 51%,.974 53.8%,.975 57.1%,.997 69.8%,1.003 76.9%,1)}}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --primary:#ffb596;--on-primary:#5a1c00;--primary-container:#7b2f0b;--on-primary-container:#ffdbcc;
-  --secondary-container:#5a4136;--on-secondary-container:#f5dfd4;
-  --tertiary-container:#444903;--on-tertiary-container:#e5e8b0;
-  --surface:#1a120e;--on-surface:#f0dfd8;--on-surface-variant:#d8c2b8;
-  --sc-low:#231a16;--sc:#271e1a;--sc-high:#322824;--outline:#a08d84;--outline-variant:#52443c;
-  --cool-container:#2c4a5c;--on-cool-container:#d0e8f6;
-  --violet-container:#44385c;--on-violet-container:#e6defa;}}
+  --secondary-container:#5a4136;--on-secondary-container:#f5dfd4;--tertiary-container:#444903;--on-tertiary-container:#e5e8b0;
+  --cool-container:#2c4a5c;--on-cool-container:#d0e8f6;--violet-container:#44385c;--on-violet-container:#e6defa;
+  --surface:#1a120e;--on-surface:#f0dfd8;--on-surface-variant:#d8c2b8;--sc:#271e1a;--sc-high:#322824;--outline:#a08d84;--outline-variant:#52443c;color-scheme:dark}}
 :root[data-theme="dark"]{
   --primary:#ffb596;--on-primary:#5a1c00;--primary-container:#7b2f0b;--on-primary-container:#ffdbcc;
-  --secondary-container:#5a4136;--on-secondary-container:#f5dfd4;
-  --tertiary-container:#444903;--on-tertiary-container:#e5e8b0;
-  --surface:#1a120e;--on-surface:#f0dfd8;--on-surface-variant:#d8c2b8;
-  --sc-low:#231a16;--sc:#271e1a;--sc-high:#322824;--outline:#a08d84;--outline-variant:#52443c;
-  --cool-container:#2c4a5c;--on-cool-container:#d0e8f6;
-  --violet-container:#44385c;--on-violet-container:#e6defa;}
-html{height:auto;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+  --secondary-container:#5a4136;--on-secondary-container:#f5dfd4;--tertiary-container:#444903;--on-tertiary-container:#e5e8b0;
+  --cool-container:#2c4a5c;--on-cool-container:#d0e8f6;--violet-container:#44385c;--on-violet-container:#e6defa;
+  --surface:#1a120e;--on-surface:#f0dfd8;--on-surface-variant:#d8c2b8;--sc:#271e1a;--sc-high:#322824;--outline:#a08d84;--outline-variant:#52443c;color-scheme:dark}
 *{box-sizing:border-box}
-::selection{background:var(--on-surface);color:var(--surface)}
-.theme-anim,.theme-anim *{transition:background-color .5s ease,color .5s ease,border-color .5s ease!important}
-@media (prefers-reduced-motion:reduce){.theme-anim,.theme-anim *{transition:none!important}}
-.hero ::selection{background:var(--on-primary-container);color:var(--primary-container)}
-body{margin:0;background:var(--surface);color:var(--on-surface);font:400 16px/24px "Noto Sans",system-ui,sans-serif;letter-spacing:.5px}
-a{color:var(--primary)}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--outline-variant)}
-.bar{max-width:880px;margin:auto;height:64px;padding:0 16px;display:flex;align-items:center;gap:8px}
-.bar .t{font:800 26px/28px "Outfit","Roboto Flex",system-ui,sans-serif;letter-spacing:-.5px;letter-spacing:0;flex:1}
-.bar a.nav{color:var(--on-surface-variant);text-decoration:none;font:500 14px/20px "Noto Sans",system-ui,sans-serif;letter-spacing:.1px;padding:10px 12px;border-radius:var(--r-full)}
-.bar a.nav:hover{background:var(--sc-high)}
-.icon{width:48px;height:48px;border:0;border-radius:var(--r-full);background:none;color:var(--on-surface-variant);cursor:pointer;font-size:20px}
-.icon:hover{background:var(--sc-high)}
-:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
-main{max-width:880px;margin:auto;padding:0 16px 48px}
-section{padding-top:56px}
-.hero{margin-top:32px;padding:48px 32px;background:var(--primary-container);color:var(--on-primary-container);border-radius:48px}
-.hero h1{font:800 56px/64px "Outfit","Roboto Flex",system-ui,sans-serif;letter-spacing:-1.5px;margin:0 0 16px}
-.hero h1 em{font-style:italic;color:var(--primary)}
-.hero p{font-size:18px;line-height:28px;max-width:56ch;margin:0 0 24px;color:inherit}
-.row{display:flex;flex-wrap:wrap;gap:8px}
-.btn{display:inline-flex;align-items:center;height:40px;padding:0 24px;border-radius:var(--r-full);font:500 14px/20px "Noto Sans",system-ui,sans-serif;letter-spacing:.1px;text-decoration:none;border:1px solid transparent}
-.btn.fill{background:var(--primary);color:var(--on-primary)}
-.btn.tonal{background:var(--secondary-container);color:var(--on-secondary-container)}
-.btn.out{border-color:var(--outline);color:var(--primary)}
-.btn:hover{filter:brightness(1.08)}
-h2{font:700 34px/40px "Outfit","Roboto Flex",system-ui,sans-serif;letter-spacing:-.5px;margin:0 0 16px}
-.chip{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:var(--r-sm);border:1px solid var(--outline);font:500 14px/20px "Noto Sans",system-ui,sans-serif;letter-spacing:.1px;color:var(--on-surface-variant)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{background:var(--sc-low);border:1px solid var(--outline-variant);border-radius:var(--r-md);padding:20px}
-.card.c1{background:var(--violet-container);color:var(--on-violet-container);border:0}
-.card.c2{background:var(--tertiary-container);color:var(--on-tertiary-container);border:0}
-.card.c3{background:var(--cool-container);color:var(--on-cool-container);border:0}
-.card h3{font:600 22px/28px "Outfit","Roboto Flex",system-ui,sans-serif;letter-spacing:0;margin:0 0 8px}
-.card p{margin:0;font-size:14px;line-height:20px;letter-spacing:.25px}
-.mono{font-family:"Roboto Mono",ui-monospace,monospace;font-size:13px}
-.log{background:var(--sc);border-radius:var(--r-xl);padding:24px;margin-top:16px}
-.log h3{margin:0 0 12px;font:500 16px/24px "Noto Sans",system-ui,sans-serif}
-.log ul{margin:0;padding-left:20px}.log li{margin:6px 0}
-.log s{color:var(--outline)}
-.proj{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-.proj .chip{margin-top:4px}
-.k{font:600 13px/20px "Noto Sans",system-ui,sans-serif;letter-spacing:.5px;text-transform:uppercase;opacity:.75;margin-bottom:4px}
-.v{font-family:"Roboto Mono",ui-monospace,monospace;font-size:15px;line-height:22px;word-break:break-all}
-.card.link{text-decoration:none;color:inherit}
-.card.link:hover{filter:brightness(1.08)}
-.contact{margin:24px 0 20px}
-.pills{gap:12px}
-.btn b{font-weight:600;margin-right:8px;color:var(--on-surface)}
-button.btn{background:none;cursor:pointer}
-.btn:hover{background:var(--sc-high);filter:none}
-.hint{font-size:13px;line-height:20px;color:var(--on-surface-variant);margin:12px 0 0}
-footer{max-width:880px;margin:auto;padding:24px 16px 32px;color:var(--on-surface-variant);font-size:14px;border-top:1px solid var(--outline-variant)}
-@media (max-width:600px){.hero{padding:32px 20px;border-radius:32px}.hero h1{font-size:40px;line-height:48px}.bar a.nav{display:none}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--surface);color:var(--on-surface);font:400 17px/28px "Roboto Flex",system-ui,sans-serif;overflow-x:hidden}
+::selection{background:var(--primary);color:var(--on-primary)}
+:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){z-index:99}
+a{color:inherit}
+main{max-width:1040px;margin:auto;padding:0 16px}
+main,footer{transition:opacity .22s ease,translate .22s ease}
+.fading main,.fading footer{opacity:0;translate:0 10px}
+section{padding-top:96px}
+h2{font:900 clamp(40px,8vw,84px)/.95 "Roboto Flex",sans-serif;font-variation-settings:"opsz" 144;letter-spacing:-2px;margin:0 0 28px}
+.mono{font-family:"Roboto Mono",ui-monospace,monospace}
+
+/* one shared button interaction: soft state layer + gentle press */
+.tap{position:relative;overflow:hidden;transition:scale .25s var(--emph),background-color .25s var(--emph),color .25s var(--emph)}
+.tap::after{content:"";position:absolute;inset:0;border-radius:inherit;background:currentColor;opacity:0;transition:opacity .25s var(--emph);pointer-events:none}
+@media (hover:hover){.tap:hover::after{opacity:.12}}
+.tap:active{scale:.96}.tap:active::after{opacity:.18}
+.pr.tap:active,.links a.tap:active{scale:.985}
+
+/* top strip */
+.strip{max-width:1040px;margin:auto;padding:20px 16px 0;display:flex;justify-content:space-between;align-items:center}
+.strip b{font:900 22px/24px "Roboto Flex",sans-serif;letter-spacing:-.5px}
+.lang{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:4px;border-radius:9999px;background:var(--sc-high)}
+.lang .th{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:9999px;background:var(--primary);transition:translate .55s var(--spring)}
+.lang[data-l=ro] .th{translate:100% 0}
+.lang button{position:relative;z-index:1;width:52px;height:36px;border:0;border-radius:9999px;background:none;color:var(--on-surface-variant);font:700 14px/20px "Roboto Flex",sans-serif;letter-spacing:.5px;cursor:pointer}
+.lang button[aria-pressed=true]{color:var(--on-primary)}
+
+/* floating toolbar */
+nav{position:fixed;z-index:10;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);translate:-50% 200%;display:flex;align-items:center;padding:6px;border-radius:9999px;background:var(--on-surface);color:var(--surface);animation:up 1s 1s var(--spring) forwards;max-width:calc(100% - 16px)}
+@keyframes up{to{translate:-50% 0}}
+nav .ind{position:absolute;top:6px;bottom:6px;left:0;width:0;border-radius:9999px;background:var(--primary);transition:left .6s var(--spring),width .6s var(--spring)}
+nav a{position:relative;text-decoration:none;font:600 14px/20px "Roboto Flex",sans-serif;padding:10px 14px;border-radius:9999px;color:inherit;opacity:.75}
+nav a.on{opacity:1;color:var(--on-primary)}
+.theme{width:40px;height:40px;margin-left:4px;border:0;border-radius:50%;background:var(--surface);color:var(--on-surface);font-size:18px;cursor:pointer}
+@media (max-width:520px){nav a{padding:10px 8px;font-size:13px}}
+@media (max-width:400px){nav a{padding:10px 6px;font-size:12px}}
+
+/* hero */
+.hero{margin-top:20px;padding:48px 36px 40px;background:var(--primary-container);color:var(--on-primary-container);border-radius:56px;animation:slab 1.2s .1s var(--spring) backwards}
+@keyframes slab{from{scale:.9;opacity:0;border-radius:160px}}
+.hero h1{margin:0 0 28px}
+.l1{display:block;white-space:nowrap;font:800 clamp(38px,10.5vw,96px)/1 "Roboto Flex",sans-serif;font-variation-settings:"wght" 800,"wdth" 90,"opsz" 144;letter-spacing:-2px}
+.ch{display:inline-block;transition:font-variation-settings .5s var(--spring);animation:chIn 1s var(--spring) backwards;animation-delay:calc(.3s + var(--i)*45ms)}
+@keyframes chIn{from{opacity:0;translate:0 50%;font-variation-settings:"wght" 200,"wdth" 30,"opsz" 144}}
+.nm{color:var(--primary)}
+.l2{display:block;margin-top:14px;font:700 clamp(26px,5vw,48px)/1.15 "Roboto Flex",sans-serif;letter-spacing:-1px}
+.w2{display:inline-block;animation:wIn 1s var(--spring) backwards;animation-delay:calc(.8s + var(--i)*70ms)}
+@keyframes wIn{from{opacity:0;translate:0 70%;rotate:6deg}}
+.hero p{max-width:46ch;margin:0 0 28px;font-size:19px;line-height:30px}
+.bar{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;height:56px;padding:0 30px;border-radius:9999px;font:700 16px/20px "Roboto Flex",sans-serif;text-decoration:none;border:2px solid currentColor}
+.btn.fill{background:var(--primary);color:var(--on-primary);border-color:transparent}
+
+.rv{opacity:0;translate:0 48px;scale:.95;transition:opacity .6s var(--emph),translate 1s var(--spring),scale 1s var(--spring);transition-delay:calc(var(--i,0)*100ms)}
+.rv.in{opacity:1;translate:0 0;scale:1}
+
+/* about */
+.lead{font:400 clamp(24px,4vw,40px)/1.32 "Roboto Flex",sans-serif;letter-spacing:-.5px;max-width:26em;margin:0}
+.lead i{font-style:normal;font-weight:900;color:var(--primary);text-decoration:underline wavy;text-decoration-thickness:.07em;text-underline-offset:.18em}
+
+/* map */
+.map{background:var(--sc);border-radius:56px;padding:12px}
+.map svg{display:block;width:100%;height:auto}
+.ln{stroke:var(--outline);stroke-width:2;stroke-dasharray:4 10;stroke-linecap:round;animation:flow 1.4s linear infinite;transition:stroke .4s,stroke-width .4s}
+.ln.on{stroke:var(--primary);stroke-width:4;stroke-dasharray:2 12;animation-duration:.45s}
+@keyframes flow{to{stroke-dashoffset:-28}}
+.nd{cursor:pointer;outline:none}
+.nd path{transition:fill .3s}
+.nd text{font:700 20px "Roboto Flex",sans-serif;fill:var(--on-surface);text-anchor:middle;pointer-events:none}
+.nd:focus-visible path{stroke:var(--primary);stroke-width:4}
+.n0 path{fill:var(--violet-container)}.n1 path{fill:var(--tertiary-container)}.n2 path{fill:var(--cool-container)}.n3 path{fill:var(--primary-container)}
+.core path{fill:var(--primary)}.core text{fill:var(--on-primary);font-size:24px;font-weight:900}
+.panel{margin:12px 0 0;padding:36px;transition:background-color .6s var(--emph),color .6s var(--emph),border-radius .9s var(--spring);min-height:200px}
+.p0{background:var(--violet-container);color:var(--on-violet-container);border-radius:44px 100px 44px 44px}
+.p1{background:var(--tertiary-container);color:var(--on-tertiary-container);border-radius:100px 44px 44px 44px}
+.p2{background:var(--cool-container);color:var(--on-cool-container);border-radius:44px 44px 100px 44px}
+.p3{background:var(--primary-container);color:var(--on-primary-container);border-radius:44px 44px 44px 100px}
+.sw>*{animation:sw .8s var(--spring) backwards;animation-delay:calc(var(--k,0)*70ms)}
+@keyframes sw{from{opacity:0;translate:0 24px}}
+.panel h3{margin:0 0 10px;font:900 clamp(30px,5vw,48px)/1 "Roboto Flex",sans-serif;letter-spacing:-1px}
+.panel p{margin:0;max-width:44ch;font-size:19px;line-height:30px}
+.panel ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:8px;max-width:520px}
+.panel li{padding:12px 20px;border-radius:9999px;background:color-mix(in srgb,currentColor 12%,transparent);font-size:16px;line-height:24px}
+.panel .mono{color:var(--primary)}
+.panel s{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 55%/100% 2px no-repeat;animation:draw 1s .9s var(--emph) backwards}
+@keyframes draw{from{background-size:0 2px}}
+
+/* project */
+.pr{display:flex;flex-direction:column;justify-content:space-between;min-height:300px;padding:36px;background:var(--primary);color:var(--on-primary);border-radius:56px 56px 140px 56px;text-decoration:none}
+.pr h3{margin:0;font:900 clamp(48px,10vw,110px)/.95 "Roboto Flex",sans-serif;letter-spacing:-3px;font-variation-settings:"opsz" 144,"wdth" 90}
+.chip{align-self:flex-start;padding:4px 14px;border-radius:9999px;border:2px solid currentColor;font:600 13px/20px "Roboto Mono",monospace}
+.go{position:absolute;right:28px;bottom:28px;width:60px;height:60px;display:grid;place-items:center;border-radius:50%;background:var(--surface);color:var(--on-surface);font-size:26px}
+
+/* contact */
+.say{white-space:nowrap;font-size:clamp(56px,17vw,200px);line-height:.9;letter-spacing:-4px;margin:0 0 24px;font-variation-settings:"wght" 900,"wdth" 90,"opsz" 144}
+.contact p{max-width:46ch;margin:0 0 36px;font-size:20px;line-height:30px}
+.links{border-top:2px solid var(--outline-variant)}
+.links a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:26px 8px;text-decoration:none;border-bottom:2px solid var(--outline-variant)}
+.links b{font:800 clamp(22px,4vw,36px)/1.1 "Roboto Flex",sans-serif;letter-spacing:-.5px}
+.links span{font:15px/20px "Roboto Mono",monospace;word-break:break-all;text-align:right}
+footer{max-width:1040px;margin:auto;padding:56px 16px 120px;color:var(--on-surface-variant);font-size:15px}
+@media (max-width:600px){.hero{padding:36px 22px 30px;border-radius:40px}.panel{padding:28px 22px}.pr{padding:28px 24px}.map{border-radius:36px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important}html{scroll-behavior:auto}.rv{opacity:1;translate:0 0;scale:1}nav{translate:-50% 0}}
 </style>
 </head>
 <body>
-<header><div class="bar">
-  <span class="t">rusu</span>
-  <a class="nav" href="#about">About</a><a class="nav" href="#into">Interests</a><a class="nav" href="#work">Projects</a><a class="nav" href="#contact">Contact</a>
-  <button class="icon" id="theme" aria-label="Toggle light or dark theme" title="Light / dark">◐</button>
-</div></header>
+<div class="strip"><b>rusu</b>
+  <div class="lang" id="lang" data-l="en" role="group" aria-label="Language"><span class="th"></span>
+    <button class="tap" data-l="en" aria-pressed="true">EN</button><button class="tap" data-l="ro" aria-pressed="false">RO</button></div>
+</div>
+
+<nav aria-label="Main">
+  <span class="ind" id="ind"></span>
+  <a class="tap" href="#top" data-t="home">Home</a><a class="tap" href="#about" data-t="about">About</a><a class="tap" href="#into" data-t="into">Into</a><a class="tap" href="#work" data-t="work">Work</a><a class="tap" href="#contact" data-t="contact">Contact</a>
+  <button class="theme tap" id="theme" aria-label="Toggle light or dark theme">◐</button>
+</nav>
 
 <main>
-<section class="hero" id="top">
-  <h1>Hi, I'm <em>Rusu</em>.<br>I break my network, then fix it.</h1>
-  <p>I live in Hîncești, Moldova, run a few services at home, and I'm slowly teaching myself C++. This is my little corner of the internet.</p>
-  <div class="row">
-    <a class="btn fill" href="https://github.com/rusux64-bit" target="_blank" rel="noopener noreferrer">My GitHub</a>
-    <a class="btn out" href="#work">See what I'm making</a>
+<section class="hero" id="top" style="padding-top:48px">
+  <h1 id="hh1" aria-label="Hi, I’m Rusu. I break my network, then fix it.">
+    <span class="l1" aria-hidden="true">Hi, I’m <span class="nm">Rusu.</span></span>
+    <span class="l2" aria-hidden="true" id="l2"></span>
+  </h1>
+  <p data-t="intro">I run a few servers at home, spend a little too much time on DNS, and I’m slowly teaching myself C++. This is my little corner of the internet.</p>
+  <div class="bar">
+    <a class="btn fill tap" href="https://github.com/rusux64-bit" target="_blank" rel="noopener noreferrer" data-t="gh">My GitHub</a>
+    <a class="btn tap" href="#work" data-t="see">See what I’m making</a>
   </div>
 </section>
 
 <section id="about">
-  <h2>About me</h2>
-  <p>I'm the kind of person who isn't happy when something just works — I want to know <i>why</i> it works. That's how I ended up self-hosting things and chasing down DNS problems at odd hours. Linux is my main environment, with macOS next to it when the task fits better.</p>
+  <h2 class="rv" data-t="aboutH">About me</h2>
+  <p class="lead rv" style="--i:1" data-t="aboutP"></p>
 </section>
 
 <section id="into">
-  <h2>What I'm into</h2>
-  <div class="grid">
-    <div class="card c1"><h3>Self-hosting</h3><p>Running services at home and finding out what it really takes to keep them up.</p></div>
-    <div class="card c2"><h3>Networking</h3><p>Routing, DNS, and the classic "why can't I reach this?" mystery.</p></div>
-    <div class="card c3"><h3>Linux + macOS</h3><p>Both, every day. Whichever one makes the job easier.</p></div>
+  <h2 class="rv" data-t="intoH">What I’m into</h2>
+  <div class="map rv">
+    <svg id="svg" viewBox="0 0 640 400" role="group"><g id="lines"></g><g id="nodes"></g></svg>
   </div>
-  <div class="log">
-    <h3>Currently learning: C++</h3>
-    <p style="margin:0 0 12px;font-size:14px;line-height:20px">Still early days. Mostly practice projects and small experiments.</p>
-    <ul>
-      <li>Writing small programs to see how things behave</li>
-      <li>Breaking things <span class="mono">→</span> reading the error <span class="mono">→</span> fixing them</li>
-      <li><s>Understanding everything on the first try</s></li>
-    </ul>
-  </div>
+  <div class="panel p0 sw" id="panel" aria-live="polite"></div>
 </section>
 
 <section id="work">
-  <h2>Projects</h2>
-  <div class="grid">
-    <a class="card" href="https://github.com/rusux64-bit/Ripcord" style="text-decoration:none;color:inherit" target="_blank" rel="noopener noreferrer">
-      <div class="proj"><h3>Ripcord</h3><span class="chip">JavaScript</span></div>
-      <p>My most visible repo on GitHub. Take a look at the code and tell me what I got wrong.</p>
-    </a>
-    <a class="card" href="https://github.com/rusux64-bit/rusux64-bit" style="text-decoration:none;color:inherit" target="_blank" rel="noopener noreferrer">
-      <div class="proj"><h3>Profile README</h3><span class="chip">Markdown</span></div>
-      <p>The short version of this page, written for GitHub.</p>
+  <h2 class="rv" data-t="workH">Projects</h2>
+  <div class="rv">
+    <a class="pr tap" href="https://github.com/rusux64-bit/Ripcord" target="_blank" rel="noopener noreferrer" aria-label="Ripcord, JavaScript">
+      <span class="chip">JavaScript</span><h3>Ripcord</h3><span class="go">→</span>
     </a>
   </div>
 </section>
 
-<section id="contact">
-  <h2>Say hi</h2>
-  <p>Want to talk about self-hosting, networking or C++? Open an issue or send a message on GitHub. I'm always happy to learn from people who know more than I do.</p>
-  <div class="row pills">
-    <a class="btn out" href="https://github.com/rusux64-bit" target="_blank" rel="noopener noreferrer"><b>GitHub</b>rusux64-bit</a>
-    <a class="btn out" href="https://www.instagram.com/alexandru._.rusu999/" target="_blank" rel="noopener noreferrer"><b>Instagram</b>@alexandru._.rusu999</a>
-    <a class="btn out" href="mailto:rusu.x64@gmail.com"><b>Email</b>rusu.x64@gmail.com</a>
+<section id="contact" class="contact">
+  <h2 class="say" id="say">Say hi</h2>
+  <p class="rv" data-t="sayP"></p>
+  <div class="links rv">
+    <a class="tap" href="https://github.com/rusux64-bit" target="_blank" rel="noopener noreferrer"><b>GitHub</b><span>rusux64-bit</span></a>
+    <a class="tap" href="https://www.instagram.com/alexandru._.rusu999/" target="_blank" rel="noopener noreferrer"><b>Instagram</b><span>@alexandru._.rusu999</span></a>
+    <a class="tap" href="mailto:rusu.x64@gmail.com"><b data-t="mail">Email</b><span>rusu.x64@gmail.com</span></a>
   </div>
 </section>
 </main>
-
-<footer>Made with ❤️ in Moldova. Still in progress.</footer>
+<footer data-t="foot">Made with love in Moldova. Still in progress.</footer>
 
 <script>
 (function(){
-  var root=document.documentElement;
-  document.getElementById('theme').addEventListener('click',function(){
-    var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
-    root.classList.add('theme-anim');
-    root.dataset.theme=dark?'light':'dark';
-    clearTimeout(window.__t);
-    window.__t=setTimeout(function(){root.classList.remove('theme-anim')},600);
-  });
-  document.querySelectorAll('[data-copy]').forEach(function(b){
-    b.addEventListener('click',function(){
-      var v=b.getAttribute('data-copy'),t=b.querySelector('span'),old=t.textContent;
-      function done(){t.textContent='Copied ✓';setTimeout(function(){t.textContent=old},1300)}
-      try{navigator.clipboard.writeText(v).then(done,done)}catch(e){done()}
-    });
-  });
+var root=document.documentElement,rm=matchMedia('(prefers-reduced-motion:reduce)').matches,$=function(i){return document.getElementById(i)};
+
+/* translations */
+var D={
+en:{home:'Home',about:'About',into:'Into',work:'Work',contact:'Contact',
+ h1a:'Hi, I’m <span class="nm">Rusu.</span>',h1b:'I break my network, then fix it.',aria:'Hi, I’m Rusu. I break my network, then fix it.',
+ intro:'I run a few servers at home, spend a little too much time on DNS, and I’m slowly teaching myself C++. This is my little corner of the internet.',
+ gh:'My GitHub',see:'See what I’m making',aboutH:'About me',
+ aboutP:'I’m the kind of person who isn’t happy when something just works. I want to know <i>why</i> it works. That’s how I ended up self-hosting things and chasing down DNS problems at odd hours. Linux is my main environment, with macOS next to it when the task fits better.',
+ intoH:'What I’m into',mapAria:'Interactive map of my interests',workH:'Projects',say:'Say hi',
+ sayP:'Want to talk about self-hosting, networking or C++? Open an issue or send a message on GitHub. I’m always happy to learn from people who know more than I do.',
+ mail:'Email',foot:'Made with love in Moldova. Still in progress.',theme:'Toggle light or dark theme'},
+ro:{home:'Acasă',about:'Despre',into:'Pasiuni',work:'Proiecte',contact:'Contact',
+ h1a:'Salut, sunt <span class="nm">Rusu.</span>',h1b:'Îmi stric rețeaua, apoi o repar.',aria:'Salut, sunt Rusu. Îmi stric rețeaua, apoi o repar.',
+ intro:'Țin câteva servere acasă, petrec puțin cam mult timp cu DNS-ul și învăț încet C++. Acesta este micul meu colț de internet.',
+ gh:'GitHub-ul meu',see:'Vezi ce construiesc',aboutH:'Despre mine',
+ aboutP:'Sunt genul de om care nu se mulțumește când ceva doar funcționează. Vreau să știu <i>de ce</i> funcționează. Așa am ajuns să-mi găzduiesc singur serviciile și să caut probleme de DNS la ore târzii. Linux este mediul meu principal, iar macOS stă alături când sarcina se potrivește mai bine.',
+ intoH:'Ce mă pasionează',mapAria:'Hartă interactivă a pasiunilor mele',workH:'Proiecte',say:'Scrie-mi',
+ sayP:'Vrei să vorbim despre self-hosting, rețele sau C++? Deschide un issue sau trimite-mi un mesaj pe GitHub. Învăț mereu cu plăcere de la oameni care știu mai mult decât mine.',
+ mail:'E-mail',foot:'Făcut cu dragoste în Moldova. Încă în lucru.',theme:'Comută tema deschisă sau închisă'}};
+var T={
+en:[{label:'Self-hosting',t:'Self-hosting',b:'Running services at home and finding out what it really takes to keep them up.'},
+ {label:'Networking',t:'Networking',b:'Routing, DNS, and the classic “why can’t I reach this?” mystery.'},
+ {label:'Linux + macOS',t:'Linux + macOS',b:'Both, every day. Whichever one makes the job easier.'},
+ {label:'C++',t:'Currently learning: C++',b:'Still early days. Mostly practice projects and small experiments.',
+  ul:'<li>Writing small programs to see how things behave</li><li>Breaking things <span class="mono">→</span> reading the error <span class="mono">→</span> fixing them</li><li><s>Understanding everything on the first try</s></li>'}],
+ro:[{label:'Self-hosting',t:'Self-hosting',b:'Rulez servicii acasă și descopăr ce înseamnă, de fapt, să le menții pornite.'},
+ {label:'Rețele',t:'Rețele',b:'Rutare, DNS și clasicul mister „de ce nu pot ajunge aici?”.'},
+ {label:'Linux + macOS',t:'Linux + macOS',b:'Pe amândouă, zilnic. Oricare face treaba mai ușoară.'},
+ {label:'C++',t:'Acum învăț: C++',b:'Sunt abia la început. În mare parte proiecte de exercițiu și experimente mici.',
+  ul:'<li>Scriu programe mici ca să văd cum se comportă lucrurile</li><li>Stric ceva <span class="mono">→</span> citesc eroarea <span class="mono">→</span> repar</li><li><s>Să înțeleg totul din prima</s></li>'}]};
+
+/* theme: circular reveal */
+var tb=$('theme');
+tb.addEventListener('click',function(){
+  var r=tb.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+  function flip(){var d=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;root.dataset.theme=d?'light':'dark'}
+  if(!document.startViewTransition||rm){flip();return}
+  document.startViewTransition(flip).ready.then(function(){
+    var rad=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+    root.animate({clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+rad+'px at '+x+'px '+y+'px)']},{duration:800,easing:'cubic-bezier(.2,0,0,1)',pseudoElement:'::view-transition-new(root)'});
+  }).catch(function(){});
+});
+
+/* letters that react to the pointer (variable font width + weight) */
+function fish(el,wd0,wg0,wd1,wg1){
+  var chars=[];
+  function build(){chars=[];(function split(n){[].slice.call(n.childNodes).forEach(function(c){
+    if(c.nodeType===3){var f=document.createDocumentFragment();c.textContent.split('').forEach(function(t){
+      if(t===' '){f.appendChild(document.createTextNode(' '));return}
+      var s=document.createElement('span');s.className='ch';s.textContent=t;s.style.setProperty('--i',chars.length);chars.push(s);f.appendChild(s)});c.replaceWith(f)}
+    else split(c)})})(el)}
+  if(!rm){
+    el.addEventListener('pointermove',function(e){chars.forEach(function(s){var r=s.getBoundingClientRect(),t=Math.max(0,1-Math.abs(e.clientX-(r.left+r.width/2))/Math.max(140,r.height*1.6));
+      s.style.fontVariationSettings='"wght" '+Math.round(wg0+(wg1-wg0)*t)+',"wdth" '+Math.round(wd0+(wd1-wd0)*t)+',"opsz" 144'})});
+    el.addEventListener('pointerleave',function(){chars.forEach(function(s){s.style.fontVariationSettings=''})});
+  }
+  return function(html){el.innerHTML=html;build()};
+}
+var setL1=fish(document.querySelector('.l1'),90,800,140,1000),setSay=fish($('say'),90,900,145,1000);
+function words(h){return h.split(' ').map(function(w,i){return '<span class="w2" style="--i:'+i+'">'+w+'</span>'}).join(' ')}
+
+/* interest map with morphing shapes */
+var C={x:320,y:200,R:56,l:12,cls:'core',label:'rusu',base:.08};
+var N=[{x:120,y:90,R:46,l:8,cls:'n0'},{x:520,y:90,R:46,l:6,cls:'n1'},{x:120,y:290,R:46,l:7,cls:'n2'},{x:520,y:290,R:46,l:5,cls:'n3'}];
+var NS='http://www.w3.org/2000/svg',gl=$('lines'),gn=$('nodes'),sel=0,panel=$('panel'),lang='en';
+function mk(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+function sh(n){n.amp=.05;n.v=0;n.rot=Math.random()*6;n.T=n.base||.05;
+  var g=mk('g',{class:'nd '+n.cls,tabindex:n===C?-1:0,role:n===C?'presentation':'button'},gn);
+  n.p=mk('path',{},g);n.tx=mk('text',{x:n.x,y:n===C?n.y+8:n.y+n.R+34},g);n.tx.textContent=n.label||'';n.g=g}
+function pd(n){var s='',M=72,i,a,r;for(i=0;i<M;i++){a=i/M*6.2832;r=n.R*(1+n.amp*Math.cos(n.l*a+n.rot));s+=(i?'L':'M')+(n.x+r*Math.cos(a)).toFixed(1)+' '+(n.y+r*Math.sin(a)).toFixed(1)}return s+'Z'}
+N.forEach(function(n){n.ln=mk('line',{class:'ln',x1:C.x,y1:C.y,x2:n.x,y2:n.y},gl)});
+N.forEach(sh);sh(C);
+function pick(i,first){
+  sel=i;N.forEach(function(n,k){n.ln.classList.toggle('on',k===i);n.g.setAttribute('aria-pressed',k===i);n.T=k===i?.2:.05});
+  var n=T[lang][i];panel.className='panel sw p'+i;
+  panel.innerHTML='<h3 style="--k:0">'+n.t+'</h3><p style="--k:1">'+n.b+'</p>'+(n.ul?'<ul style="--k:2">'+n.ul+'</ul>':'');
+  if(!first){panel.classList.remove('sw');void panel.offsetWidth;panel.classList.add('sw')}
+}
+N.forEach(function(n,i){
+  n.g.addEventListener('click',function(){pick(i)});
+  n.g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i)}});
+  n.g.addEventListener('pointerenter',function(){if(i!==sel)n.T=.12});
+  n.g.addEventListener('pointerleave',function(){if(i!==sel)n.T=.05});
+});
+var vis=false,all=N.concat([C]);
+new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis)loop()}).observe($('svg'));
+function loop(){
+  all.forEach(function(n){var T0=n===C?.08:n.T;n.v+=(T0-n.amp)*.16;n.v*=.74;n.amp+=n.v;n.rot+=(n===C?-.004:(N[sel]===n?.015:.003));n.p.setAttribute('d',pd(n))});
+  if(vis&&!rm)requestAnimationFrame(loop)}
+if(rm){all.forEach(function(n){n.amp=n===C?.08:n.T;n.p.setAttribute('d',pd(n))})}else{loop()}
+
+/* nav indicator */
+var links=[].slice.call(document.querySelectorAll('nav a')),ind=$('ind'),cur=links[0];
+function act(a){cur=a;links.forEach(function(l){l.classList.toggle('on',l===a)});ind.style.left=a.offsetLeft+'px';ind.style.width=a.offsetWidth+'px'}
+var secs=links.map(function(l){return document.querySelector(l.getAttribute('href'))});
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)act(links[secs.indexOf(e.target)])})},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(function(s){so.observe(s)});
+addEventListener('resize',function(){act(cur)});
+
+/* language */
+var LB=[].slice.call(document.querySelectorAll('#lang button'));
+function mark(l){$('lang').dataset.l=l;LB.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)})}
+function apply(l){
+  lang=l;var d=D[l];root.lang=l;
+  document.querySelectorAll('[data-t]').forEach(function(e){e.innerHTML=d[e.getAttribute('data-t')]});
+  setL1(d.h1a);setSay(d.say);$('l2').innerHTML=words(d.h1b);
+  $('hh1').setAttribute('aria-label',d.aria);$('svg').setAttribute('aria-label',d.mapAria);tb.setAttribute('aria-label',d.theme);
+  N.forEach(function(n,i){n.tx.textContent=T[l][i].label;n.g.setAttribute('aria-label',T[l][i].label)});
+  pick(sel,true);mark(l);
+  requestAnimationFrame(function(){act(cur)});
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+function switchTo(l){
+  if(l===lang)return;mark(l);
+  if(rm){apply(l);return}
+  root.classList.add('fading');
+  setTimeout(function(){apply(l);requestAnimationFrame(function(){root.classList.remove('fading')})},230);
+}
+LB.forEach(function(b){b.addEventListener('click',function(){switchTo(b.dataset.l)})});
+var saved='en';try{saved=localStorage.getItem('lang')==='ro'?'ro':'en'}catch(e){}
+apply(saved);
+
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+(document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){act(cur)});
 })();
 </script>
 </body>
