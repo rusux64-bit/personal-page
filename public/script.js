@@ -4,7 +4,7 @@ var root=document.documentElement,rm=matchMedia('(prefers-reduced-motion:reduce)
 /* translations */
 var D={
 en:{home:'Home',about:'About',into:'Into',work:'Work',contact:'Contact',
- h1a:'Hi, I’m <span class="nm">Rusu.</span>',h1b:'I break my network, then fix it.',aria:'Hi, I’m Rusu. I break my network, then fix it.',
+ h1a:'Hi, I’m <span class="nm">Rusu.</span>',h1b:'High school student from Republic of Moldova.',aria:'Hi, I’m Rusu. High school student from Republic of Moldova.',
  intro:'I run a few servers at home, spend a little too much time on DNS, and I’m slowly teaching myself C++. This is my little corner of the internet.',
  gh:'My GitHub',see:'See what I’m making',aboutH:'About me',
  aboutP:'I’m the kind of person who isn’t happy when something just works. I want to know <i>why</i> it works. That’s how I ended up self-hosting things and chasing down DNS problems at odd hours. Linux is my main environment, with macOS next to it when the task fits better.',
@@ -12,7 +12,7 @@ en:{home:'Home',about:'About',into:'Into',work:'Work',contact:'Contact',
  sayP:'Want to talk about self-hosting, networking or C++? Open an issue or send a message on GitHub. I’m always happy to learn from people who know more than I do.',
  mail:'Email',foot:'Made with ❤️ in Moldova.',theme:'Toggle light or dark theme'},
 ro:{home:'Acasă',about:'Despre',into:'Pasiuni',work:'Proiecte',contact:'Contact',
- h1a:'Salut, sunt <span class="nm">Rusu.</span>',h1b:'Îmi stric rețeaua, apoi o repar.',aria:'Salut, sunt Rusu. Îmi stric rețeaua, apoi o repar.',
+ h1a:'Salut, sunt <span class="nm">Rusu.</span>',h1b:'Liceean din Republica Moldova',aria:'Salut, sunt Rusu. Liceean din Republica Moldova.',
  intro:'Țin câteva servere acasă, petrec puțin cam mult timp cu DNS-ul și învăț încet C++. Acesta este micul meu colț de internet.',
  gh:'GitHub-ul meu',see:'Vezi ce construiesc',aboutH:'Despre mine',
  aboutP:'Sunt genul de om care nu se mulțumește când ceva doar funcționează. Vreau să știu <i>de ce</i> funcționează. Așa am ajuns să-mi găzduiesc singur serviciile și să caut probleme de DNS la ore târzii. Linux este mediul meu principal, iar macOS stă alături când sarcina se potrivește mai bine.',
