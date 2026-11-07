@@ -111,5 +111,3 @@ nav a.on{opacity:1;color:var(--on-primary)}
 footer{max-width:1040px;margin:auto;padding:56px 16px 120px;color:var(--on-surface-variant);font-size:15px}
 @media (max-width:600px){.hero{padding:36px 22px 30px;border-radius:40px}.panel{padding:28px 22px}.pr{padding:28px 90px 28px 24px}.map{border-radius:36px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important}html{scroll-behavior:auto}.rv{opacity:1;translate:0 0;scale:1}nav{translate:-50% 0}}
-.projects{display:grid;gap:20px}
-.pr+.pr{margin-top:0}
